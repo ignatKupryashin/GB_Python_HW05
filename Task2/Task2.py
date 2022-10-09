@@ -6,7 +6,6 @@
 import random
 
 
-
 def change_player(player): # Метод для смены игрока
     if player == "player1":
         player = "player2"
