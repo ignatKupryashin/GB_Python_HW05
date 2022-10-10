@@ -11,39 +11,47 @@ print(f"Изначальная последовательность: {my_list}")
 # def increase_sequence(some_list):
 
 
-def next_sequence(some_list, current_sequence=[], coordinate=0):
-    print(coordinate)
-    if (coordinate == len(some_list) - 1):
-        return
-    current_sequence.append(some_list[coordinate])
-    for i in range(coordinate, len(some_list)):
-        for j in range(coordinate + 1, len(some_list)):
-            if int(some_list[coordinate]) < int(some_list[j]):
-                next_sequence(some_list, current_sequence, j)
-                # print(current_sequence)
-    print("Дошло до ответа")
-    # print(current_sequence)
-    return
+# def next_sequence(some_list, current_sequence=[], pointer=0, answer=[]):
+#     current_sequence.append(some_list[pointer])
+#     answer.append(current_sequence)
+#     # print(answer)
+#     for i in range(pointer, len(some_list)):
+#         for j in range(pointer + 1, len(some_list)):
+#             print
+#             print(int(some_list[j]))
+#             print(f"{(int(some_list[pointer]))} < {(int(some_list[j]))} -- > {int(some_list[pointer]) < int(some_list[j])}")  # Просто проверка
+#             if int(some_list[pointer]) < int(some_list[j]):
+#                 next_sequence(some_list, current_sequence, pointer, answer)
+#                 # print(current_sequence)
+#     print("Дошло до ответа")
+#     # print(current_sequence)
+#     return
 #
 
-next_sequence(my_list)
+# next_sequence(my_list)
 
-# def next_sequence(some_list, answer, current_sequence = []):
-#
-#     for i in range(len(some_list)):
-#         current_sequence.append(some_list[i])
-#         for j in range(i + 1, len(some_list)):
-#             if some_list[i] < some_list[j]:
-#                 current_sequence.append(some_list[j])
-#                 answer.append(some_list[j])
-#     return answer
-#
+def next_sequence(some_list, answer, current_sequence = []):
 
-# some_answer = next_sequence(my_list, [])
+    for i in range(len(some_list)):
+        if current_sequence != []:
+            current_sequence.append(some_list[i])
+        for j in range(i + 1, len(some_list)):
+            if j == len(some_list) - 1:
+                answer.append(current_sequence.copy())
+                current_sequence. pop()
+                break
+            if some_list[i] < some_list[j]:
+                current_sequence.append(some_list[j])
+                print(current_sequence)
+    return answer
 
+
+some_answer = next_sequence(my_list, [])
+
+print(some_answer)
 # n = 1
 # for r in range(len(some_answer)):
-#     print(f"{n}: {some_answer[r]}")
+#     print(f"{n}: {list(some_answer[r]}")
 #     n += 1
 
 # current = []
